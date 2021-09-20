@@ -21,4 +21,4 @@ jobs:
           command: |
             docker login -u 756983148 -p $PASSWD
             docker tag ci-image 756983148/ci-image
-            docker push ci-image
+            docker push 756983148/ci-image
