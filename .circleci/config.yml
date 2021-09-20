@@ -1,6 +1,6 @@
 version: 2.1
 workflows:
-  environment-variables:
+  ci:
     jobs:
       - build:
           context: CI-cours 
@@ -19,5 +19,6 @@ jobs:
       - run:
           name: Push application Docker image
           command: |
-            docker login -u "756983148" -p $PASSWD
+            docker login -u 756983148 -p $PASSWD
+            docker tag ci-image 756983148/ci-image
             docker push ci-image
