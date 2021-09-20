@@ -5,20 +5,14 @@ jobs:
   build:
     working_directory: /app
     docker:
-      - image : sha256:ca45e631dc900e7ed5152a1d82c752f6d94ea4e8cb37bd728ba39bb28a60f1e6
+      - image: sha256:ca45e631dc900e7ed5152a1d82c752f6d94ea4e8cb37bd728ba39bb28a60f1e6
     steps:
       - checkout
-      - setup_remote_docker
       - run:
           name: Install dependencies
           command: |
             npm install \
               docker-compose==1.12.0 
-      - restore_cache:
-          keys:
-            - v1-{{ .Branch }}
-          paths:
-            - /caches/app.tar
       - run:
           name: Load Docker image layer cache
           command: |
@@ -33,14 +27,6 @@ jobs:
           command: |
             mkdir -p /caches
             docker save -o /caches/app.tar app
-      - save_cache:
-          key: v1-{{ .Branch }}-{{ epoch }}
-          paths:
-            - /caches/app.tar
-      - run:
-          name: Run tests
-          command: |
-            docker-compose -f ./docker-compose.test.yml up
       - deploy:
           name: Push application Docker image
           command: |
