@@ -1,4 +1,9 @@
 version: 2.1
+workflows:
+  environment-variables:
+    jobs:
+      - build:
+          context: CI-cours 
 jobs:
   build:
     working_directory: /app
