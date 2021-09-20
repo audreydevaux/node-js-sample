@@ -5,7 +5,7 @@ jobs:
   build:
     working_directory: /app
     docker:
-      - image: sha256:ca45e631dc900e7ed5152a1d82c752f6d94ea4e8cb37bd728ba39bb28a60f1e6
+      - image : sha256:ca45e631dc900e7ed5152a1d82c752f6d94ea4e8cb37bd728ba39bb28a60f1e6
     steps:
       - checkout
       - setup_remote_docker
